@@ -4,7 +4,7 @@
   "scripts": {
     "sass-build": "sass --watch src/assets/sass/main.scss:src/assets/css/main.css",
     "sass": "npm run sass",
-    "dev": "webpack serve --watch --content-base public --hot",
+    "dev": "webpack serve --content-base public --hot",
     "build": "webpack --mode=production"
   },
   "repository": {
