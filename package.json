@@ -2,9 +2,8 @@
   "name": "cburguer",
   "version": "1.0.0",
   "scripts": {
-    "sass-build": "sass --watch src/assets/sass/main.scss:src/assets/css/main.css",
-    "sass": "npm run sass",
-    "dev": "webpack serve --watch --content-base public --hot",
+    "sass": "sass --watch public/assets/sass/main.scss:public/assets/css/main.css",
+    "dev": "webpack serve  --content-base public --hot",
     "build": "webpack --mode=production"
   },
   "repository": {
@@ -20,7 +19,8 @@
   "homepage": "https://github.com/hcode-courses/lab-hburguer#readme",
   "dependencies": {
     "firebase": "^8.2.9",
-    "sass": "^1.32.8"
+    "sass": "^1.32.8",
+    "serve": "^11.3.2"
   },
   "devDependencies": {
     "webpack": "^5.24.0",

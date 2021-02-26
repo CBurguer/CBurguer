@@ -1,90 +1,61 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Projeto Hburger do Hcode Lab" />
-    <title>CBurguer</title>
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link
-      rel="shortcut icon"
-      href="assets/images/logo-favicon-green.svg"
-      type="image/x-icon"
-    />
-  </head>
-  <body id="app" class="no-footer">
-    <section>
-      <header>
-        <a href="index.html">
-          <img
-            src="assets/images/logo-icon-green.svg"
-            alt="Logo Icone"
-            id="logo-icon"
-          />
-          <img
-            src="assets/images/logo-text-green.svg"
-            alt="Logo Texto"
-            id="logo-text"
-          />
-        </a>
-        <img src="https://i.pravatar.cc/50" alt="Avatar" id="avatar" />
-      </header>
+let detalhes = [
+  {
+    data: "26/01/2021",
+    valor: "49,90",
+    Itens: "7",
+    id: "1",
+  },
+  {
+    data: "26/01/2021",
+    valor: "49,90",
+    Itens: "6",
+    id: "2",
+  },
+  {
+    data: "26/01/2021",
+    valor: "49,90",
+    Itens: "5",
+    id: "3",
+  },
+  {
+    data: "26/01/2021",
+    valor: "49,90",
+    Itens: "4",
+    id: "4",
+  },
+];
 
-      <main>
-        <header>
-          <h1>Meus Pedidos</h1>
-        </header>
-        <ul id="list-orders">
-          <div id="modal">
-            <div class="modalBackground">
-              <button>x</button>
+document.querySelectorAll("#list-orders").forEach((list) => {
+  let buttonDetalhes = list.querySelectorAll(".detalhes");
+  let modal = list.querySelector("#modal");
+  let btnCloseModal = modal.querySelector("button");
 
-              <main class="modal">
-                <table>
-                  <tr>
-                    <th>Pão</th>
-                    <th>Ingrediente</th>
-                    <th>Preço</th>
-                  </tr>
-                  <tr>
-                    <td>Pão Tradicional</td>
-                    <td>Carne Bovina 125g</td>
-                    <td>90</td>
-                  </tr>
-                  <tr>
-                    <td>Pão Australiano</td>
-                    <td>Carne de Frango 125g</td>
-                    <td>94</td>
-                  </tr>
-                  <tr>
-                    <td>Pão de Batata</td>
-                    <td>Carne de Peixe 125g</td>
-                    <td>80</td>
-                  </tr>
-                </table>
-              </main>
-            </div>
-          </div>
-          <!-- <li class="pedidos">
-            <div class="id">#123456789</div>
+  let elemento = (data, valor, item, id) => {
+    let pedidos = document.createElement("li");
+    pedidos.classList.add("pedidos");
+
+    console.log(pedidos);
+    pedidos.innerHTML = `
+
+            <div class="id">#${id}</div>
             <div class="content">
               <div class="title">Detalhes do Pedido</div>
               <ul>
                 <li>
                   <span>Data:</span>
-                  <span>26/01/2021</span>
+                  <span>${data}</span>
                 </li>
                 <li>
                   <span>Valor:</span>
-                  <span>R$ 49,90</span>
+                  <span>R$ ${valor}</span>
                 </li>
                 <li>
                   <span>Itens:</span>
-                  <span>2</span>
+                  <span>${item}</span>
                 </li>
                 <li>
                   <span>N°:</span>
-                  <span>123456789</span>
+                  <span>${id}</span>
                 </li>
               </ul>
             </div>
@@ -132,11 +103,48 @@
                 </svg>
               </button>
             </div>
-          </li> -->
-        </ul>
-      </main>
-    </section>
 
-    <script src="bundle.js"></script>
-  </body>
-</html>
+    `;
+
+    list.append(pedidos);
+    /// list.children(pedidos);
+  };
+
+  const itensPedido = () => {
+    Object.keys(detalhes).forEach((el) => {
+      let data = detalhes[el].data;
+      let valor = detalhes[el].valor;
+      let item = detalhes[el].Itens;
+      let id = detalhes[el].id;
+      elemento(data, valor, item, id);
+    });
+  };
+
+  itensPedido();
+
+  // pedidos.forEach((ticket) => {
+  //   console.log(ticket);
+  //   itensPedido();
+  // });
+
+  // console.log(modal.style);
+  buttonDetalhes.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      modal.style.opacity = "1";
+      modal.style.zIndex = "55";
+    });
+  });
+
+  btnCloseModal.addEventListener("click", (e) => {
+    modal.style.opacity = "0";
+    modal.style.zIndex = "-40";
+  });
+});
+
+// let btnExcluir = document.querySelectorAll(".excluir");
+
+// btnExcluir.forEach((btn) => {
+//   btn.addEventListener("click", (e) => {
+//     console.log(e.target);
+//   });
+// });
