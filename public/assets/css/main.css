@@ -787,6 +787,25 @@ body, div, section, main, article, header, footer, form, label {
   height: 32px;
   align-items: center;
 }
+#list-orders > li .content ul .liex {
+  display: none;
+}
+#list-orders > li .content ul .ex-open {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+#list-orders > li .content ul button {
+  background-color: var(--primary);
+  border-style: none;
+  width: 130px;
+  height: 30px;
+  color: #fff;
+  margin: 5px 5px;
+}
+#list-orders > li .content ul .btnex {
+  background-color: red;
+}
 #list-orders > li .actions {
   justify-content: center;
   border-left: var(--dark) 1px dashed;
@@ -819,6 +838,9 @@ body, div, section, main, article, header, footer, form, label {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: var(--space);
+  }
+  #list-orders > li .content ul .ex-open {
+    flex-direction: row;
   }
   #list-orders > li + li {
     margin-top: 0;
