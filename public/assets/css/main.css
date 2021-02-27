@@ -726,6 +726,7 @@ body, div, section, main, article, header, footer, form, label {
   padding: var(--space);
   height: calc(100vh - 430px);
   overflow: auto;
+  max-height: 270px;
 }
 #list-orders::-webkit-scrollbar {
   width: 10px;
@@ -794,6 +795,7 @@ body, div, section, main, article, header, footer, form, label {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  height: 50px;
 }
 #list-orders > li .content ul button {
   background-color: var(--primary);
