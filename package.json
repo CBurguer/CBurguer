@@ -2,8 +2,8 @@
   "name": "cburguer",
   "version": "1.0.0",
   "scripts": {
+    "sass": "sass --watch public/assets/sass/main.scss:public/assets/css/main.css",
     "sass-build": "sass public/assets/sass/main.scss:public/assets/css/main.css --style=compressed",
-    "sass": "sass --watch src/assets/sass/main.scss:src/assets/css/main.css",
     "dev": "webpack serve --content-base public --hot",
     "build": "webpack --mode=production"
   },
