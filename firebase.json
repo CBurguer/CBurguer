@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  },
+  "apiKey": "AIzaSyCLWxbHHhrgUIVFdlwUOtK0ouOYSBfrQ3s",
+  "authDomain": "cburguer-1958c.firebaseapp.com",
+  "projectId": "cburguer-1958c",
+  "storageBucket":"cburguer-1958c.appspot.com",
+  "messagingSenderId": "247520009267",
+  "appId": "1:247520009267:web:1362a7865701c6771a1746",
+  "measurementId": "G-65C4XZV288"
+}

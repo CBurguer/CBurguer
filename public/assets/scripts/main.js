@@ -26,7 +26,6 @@ let detalhes = [
 ];
 
 document.querySelectorAll("#list-orders").forEach((list) => {
-  let buttonDetalhes = list.querySelectorAll(".detalhes");
   let modal = list.querySelector("#modal");
   let btnCloseModal = modal.querySelector("button");
 
@@ -34,7 +33,7 @@ document.querySelectorAll("#list-orders").forEach((list) => {
     let pedidos = document.createElement("li");
     pedidos.classList.add("pedidos");
 
-    console.log(pedidos);
+    // console.log(pedidos);
     pedidos.innerHTML = `
 
             <div class="id">#${id}</div>
@@ -95,6 +94,7 @@ document.querySelectorAll("#list-orders").forEach((list) => {
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                   
                 >
                   <path
                     d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4Z"
@@ -128,6 +128,7 @@ document.querySelectorAll("#list-orders").forEach((list) => {
   // });
 
   // console.log(modal.style);
+  let buttonDetalhes = list.querySelectorAll(".detalhes");
   buttonDetalhes.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       modal.style.opacity = "1";
@@ -139,12 +140,19 @@ document.querySelectorAll("#list-orders").forEach((list) => {
     modal.style.opacity = "0";
     modal.style.zIndex = "-40";
   });
+  // let btnExcluir = document.querySelectorAll(".excluir");
+  // // let btnExcluir1 = document.querySelector(".excluir");
+
+  // btnExcluir.forEach((btn) => {
+  //   btn.addEventListener("click", (e) => {
+  //     // let id = list.querySelectorAll(".id");
+  //     // id.forEach((el) => {
+  //     //   console.log(el.innerHTML);
+  //     // });
+
+  //     let li = btn.closest("li");
+
+  //     li.remove();
+  //   });
+  // });
 });
-
-// let btnExcluir = document.querySelectorAll(".excluir");
-
-// btnExcluir.forEach((btn) => {
-//   btn.addEventListener("click", (e) => {
-//     console.log(e.target);
-//   });
-// });
