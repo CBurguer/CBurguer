@@ -13,15 +13,12 @@ if (authPage) {
   if (formAuthRegister) {
     formAuthRegister.addEventListener("submit", (e) => {
       e.preventDefault();
-
       const values = getFormValues(formAuthRegister);
 
-      // firebase auth tratando com promisses
       auth
         .createUserWithEmailAndPassword(values.email, values.password)
         .then((response) => {
           console.log("response", response);
-
           window.location.href = "login.html";
         })
         .catch((err) => {
