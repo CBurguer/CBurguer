@@ -33,7 +33,7 @@ export function calculateBurgerTotal(burguer)
     return total;
 }
 
-export function calculateTrayTotal(tray)
+export function calculateTraySubTotal(tray)
 {
     let total = 0;
 
