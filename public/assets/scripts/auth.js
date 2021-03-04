@@ -13,19 +13,13 @@ if (authPage) {
   if (formAuthRegister) {
     formAuthRegister.addEventListener("submit", (e) => {
       e.preventDefault();
-
       const values = getFormValues(formAuthRegister);
 
-      // firebase auth tratando com promisses
       auth
         .createUserWithEmailAndPassword(values.email, values.password)
         .then((response) => {
-          const { user } = response;
-
-          user.updateProfile({
-            displayName: values.name,
-          });
           console.log("response", response);
+          window.location.href = "login.html";
         })
         .catch((err) => {
           console.log("err", err);
@@ -43,6 +37,12 @@ if (authPage) {
         .then((response) => {
           const { user } = response;
           console.log("response", response);
+
+          if (user != null) {
+            window.location.href = "index.html";
+          } else {
+            console.log("usuario não logado");
+          }
         })
         .catch((err) => {
           console.log("err", err);
@@ -54,6 +54,16 @@ if (authPage) {
     forgotThePassword.addEventListener("submit", (e) => {
       e.preventDefault();
       const values = getFormValues(forgotThePassword);
+
+      auth
+        .sendPasswordResetEmail(values.email)
+        .then((response) => {
+          console.log("response", response);
+          window.location.href = "login.html";
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
     });
   }
 }
