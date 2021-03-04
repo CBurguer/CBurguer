@@ -252,6 +252,4 @@ document.querySelectorAll('#make-burguer').forEach(page => {
     
         renderTray();
     }
-
-    renderPage();
 });
