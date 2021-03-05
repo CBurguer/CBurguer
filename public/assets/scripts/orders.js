@@ -11,6 +11,7 @@ btnLixeira.forEach((btn) => {
 });
 
 //console.log(btnCancelar);
+//console.log(btnCancelar);
 
 btnCancelar.forEach((btn) => {
   btn.addEventListener("click", (e) => {
