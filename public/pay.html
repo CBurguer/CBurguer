@@ -10,7 +10,7 @@
 </head>
 <body id="app">
 
-    <section class="page">
+    <section class="page" id="pay">
 
         <header>
             <a href="index.html">
@@ -41,16 +41,9 @@
 
                     <input type="text" name="name" placeholder="Nome" />
 
-                    <select name="bank">
-                        <option>Nubank</option>
-                        <option>C6 Bank</option>
-                        <option>BS2 Bank</option>
-                    </select>
+                    <select name="bank"></select>
 
-                    <select name="installments">
-                        <option value="1">1 parcela de R$ 100,00 (R$ 100,00)</option>
-                        <option value="2">2 parcelas de R$ 52,26 (R$ 104,52)</option>
-                    </select>
+                    <select name="installments" style="display: none"></select>
 
                 </form>
 
@@ -68,5 +61,6 @@
 
     </section>
 
+    <script src="bundle.js"></script>
 </body>
 </html>

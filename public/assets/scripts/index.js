@@ -1,1 +1,3 @@
-import "./auth";
+import "./login";
+import "./pay";
+import "./home";

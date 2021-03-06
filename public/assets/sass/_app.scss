@@ -149,6 +149,9 @@
                         margin-top: var(--space);
                     }
                 }
+                .field-error {
+                    @include form.field-error;
+                }
                 .fields {
                     @include form.fields;
                     + input, + select {

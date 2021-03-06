@@ -7,3 +7,10 @@ export function getFormValues(form) {
 
   return values;
 }
+
+export function formatCurrency(value) {
+  return Intl.NumberFormat('pt-br', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(value)
+}
