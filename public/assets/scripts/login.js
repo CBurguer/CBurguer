@@ -6,29 +6,64 @@ const authPage = document.querySelector("body#auth");
 if (authPage) {
   const auth = firebase.auth();
 
-  // seleciona o formulário com ID #form-register
-  const formAuthRegister = document.querySelector("#form-register");
+  const formAuthRegister = document.getElementById("form-register");
+  const formAuthLogin = document.getElementById("form-login");
+  const forgotThePassword = document.getElementById("form-forget");
 
-  // adiciona um evento de escuta no botão submit
-  formAuthRegister.addEventListener("submit", (e) => {
-    e.preventDefault(); //cancela o comportamento padrao do formulário
+  if (formAuthRegister) {
+    formAuthRegister.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const values = getFormValues(formAuthRegister);
 
-    //processando os dados do formulário com getFormValues
-    const values = getFormValues(formAuthRegister);
-
-    // firebase auth tratando com promisses
-    auth
-      .createUserWithEmailAndPassword(values.email, values.password)
-      .then((response) => {
-        const { user } = response;
-
-        user.updateProfile({
-          displayName: values.name,
+      auth
+        .createUserWithEmailAndPassword(values.email, values.password)
+        .then((response) => {
+          console.log("response", response);
+          window.location.href = "login.html";
+        })
+        .catch((err) => {
+          console.log("err", err);
         });
-        console.log("response", response);
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
-  });
+    });
+  }
+
+  if (formAuthLogin) {
+    formAuthLogin.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const values = getFormValues(formAuthLogin);
+
+      auth
+        .signInWithEmailAndPassword(values.email, values.password)
+        .then((response) => {
+          const { user } = response;
+          console.log("response", response);
+
+          if (user != null) {
+            window.location.href = "index.html";
+          } else {
+            console.log("usuario não logado");
+          }
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
+    });
+  }
+
+  if (forgotThePassword) {
+    forgotThePassword.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const values = getFormValues(forgotThePassword);
+
+      auth
+        .sendPasswordResetEmail(values.email)
+        .then((response) => {
+          console.log("response", response);
+          window.location.href = "login.html";
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
+    });
+  }
 }
