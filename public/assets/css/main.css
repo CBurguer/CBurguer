@@ -330,7 +330,8 @@ body, div, section, main, article, header, footer, form, label {
   cursor: pointer;
   transition: none;
 }
-#app > section main .category ul label h3, #app > section main .category ul label div {
+#app > section main .category ul label h3,
+#app > section main .category ul label div {
   padding: 10px 0;
   border-bottom: var(--secondary) 1px dotted;
 }
@@ -417,7 +418,8 @@ body, div, section, main, article, header, footer, form, label {
 #app > section.page form {
   padding: var(--space);
 }
-#app > section.page form input, #app > section.page form select {
+#app > section.page form input,
+#app > section.page form select {
   height: 50px;
   width: 100%;
   border: var(--light) 1px solid;
@@ -427,13 +429,20 @@ body, div, section, main, article, header, footer, form, label {
   padding: 0 var(--space);
   outline: none;
 }
-#app > section.page form input::placeholder, #app > section.page form select::placeholder {
+#app > section.page form input::placeholder,
+#app > section.page form select::placeholder {
   color: var(--light);
 }
-#app > section.page form input:focus, #app > section.page form select:focus {
+#app > section.page form input:focus,
+#app > section.page form select:focus {
   border-color: var(--primary);
 }
-#app > section.page form input + input, #app > section.page form input + select, #app > section.page form input + .fields, #app > section.page form select + input, #app > section.page form select + select, #app > section.page form select + .fields {
+#app > section.page form input + input,
+#app > section.page form input + select,
+#app > section.page form input + .fields,
+#app > section.page form select + input,
+#app > section.page form select + select,
+#app > section.page form select + .fields {
   margin-top: var(--space);
 }
 #app > section.page form .field-error {
@@ -451,10 +460,12 @@ body, div, section, main, article, header, footer, form, label {
   margin-right: 0;
   margin-left: 10px;
 }
-#app > section.page form .fields + input, #app > section.page form .fields + select {
+#app > section.page form .fields + input,
+#app > section.page form .fields + select {
   margin-top: var(--space);
 }
-#app > section.page section, #app > section.page footer {
+#app > section.page section,
+#app > section.page footer {
   background-color: var(--white);
 }
 #app > section.page footer button {
@@ -479,7 +490,8 @@ body, div, section, main, article, header, footer, form, label {
   #app > section.page main > section {
     padding-bottom: 64px;
   }
-  #app > section.page main section, #app > section.page footer {
+  #app > section.page main section,
+#app > section.page footer {
     max-width: 768px;
     width: 100%;
   }
@@ -582,7 +594,8 @@ body, div, section, main, article, header, footer, form, label {
   cursor: pointer;
   transition-duration: 0.05s;
 }
-#app aside footer .close svg, #app aside footer .close span {
+#app aside footer .close svg,
+#app aside footer .close span {
   display: none;
 }
 #app aside footer .close svg {
@@ -659,7 +672,8 @@ body, div, section, main, article, header, footer, form, label {
 #app aside.open {
   height: calc(100vh - 350px);
 }
-#app aside.open header, #app aside.open section {
+#app aside.open header,
+#app aside.open section {
   padding: var(--space);
   height: initial;
 }
@@ -686,7 +700,8 @@ body, div, section, main, article, header, footer, form, label {
   height: 24px;
   width: 24px;
 }
-#app aside.open footer .close svg, #app aside.open footer .close span {
+#app aside.open footer .close svg,
+#app aside.open footer .close span {
   display: flex;
 }
 @media (min-width: 768px) {
@@ -731,6 +746,7 @@ body, div, section, main, article, header, footer, form, label {
   padding: var(--space);
   height: calc(100vh - 430px);
   overflow: auto;
+  max-height: 270px;
 }
 #list-orders::-webkit-scrollbar {
   width: 10px;
@@ -792,6 +808,26 @@ body, div, section, main, article, header, footer, form, label {
   height: 32px;
   align-items: center;
 }
+#list-orders > li .content ul .liex {
+  display: none;
+}
+#list-orders > li .content ul .ex-open {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 50px;
+}
+#list-orders > li .content ul button {
+  background-color: var(--primary);
+  border-style: none;
+  width: 130px;
+  height: 30px;
+  color: #fff;
+  margin: 5px 5px;
+}
+#list-orders > li .content ul .btnex {
+  background-color: red;
+}
 #list-orders > li .actions {
   justify-content: center;
   border-left: var(--dark) 1px dashed;
@@ -825,6 +861,9 @@ body, div, section, main, article, header, footer, form, label {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: var(--space);
   }
+  #list-orders > li .content ul .ex-open {
+    flex-direction: row;
+  }
   #list-orders > li + li {
     margin-top: 0;
   }
@@ -837,6 +876,85 @@ body, div, section, main, article, header, footer, form, label {
 @media (min-width: 1536px) {
   #list-orders {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+#modal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  opacity: 0;
+  z-index: -21;
+  transition: 0.4s ease-in-out;
+  background-color: #252424bd;
+}
+
+.modalBackground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  opacity: 1;
+  z-index: 5;
+  transition: 0.4s ease-in-out;
+  background-color: #252424bd;
+}
+
+#modal button {
+  position: absolute;
+  padding: 30px;
+  background-color: green;
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  right: 35px;
+  top: 37px;
+  font-size: 52px;
+  width: 85px;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85px;
+}
+
+.modal {
+  background-color: #252424bd;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+table {
+  width: 95%;
+  margin: 0 auto;
+  border: 1px solid #18d00e;
+  position: relative;
+  z-index: 5555;
+  height: 297px;
+}
+
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  color: #000;
+  text-align: center;
+}
+
+tr {
+  background-color: #fff;
+}
+
+@media (min-width: 765px) {
+  table {
+    width: 65%;
   }
 }
 

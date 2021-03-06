@@ -1,11 +1,11 @@
 export function getFormValues(form) {
-  const values = {};
+    const values = {};
 
-  form.querySelectorAll("[name]").forEach((input) => {
-    values[input.name] = input.value;
-  });
+    form.querySelectorAll("[name]").forEach((input) => {
+        values[input.name] = input.value;
+    });
 
-  return values;
+    return values;
 }
 
 export function formatCurrency(value) {
