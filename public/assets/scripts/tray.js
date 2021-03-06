@@ -183,7 +183,7 @@ document.querySelectorAll('#make-burguer').forEach(page => {
           
             const tray = getTray();
         
-            if (tray.length < 1) {
+            if (tray[0].ingredients.length < 1) {
 
                 showAlertError('A bandeja deve conter ao menos 1 item!');
         
