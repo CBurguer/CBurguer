@@ -4,13 +4,8 @@
   "scripts": {
     "sass": "sass --watch public/assets/sass/main.scss:public/assets/css/main.css",
     "sass-build": "sass public/assets/sass/main.scss:public/assets/css/main.css --style=compressed",
-<<<<<<< HEAD
     "build": "webpack --mode=production",
     "dev": "webpack serve --content-base public --hot"
-=======
-    "dev": "webpack serve --content-base public --hot",
-    "build": "webpack --mode=production"
->>>>>>> 8afb754efee5b43fb6a78b088d260aa37876c7bc
   },
   "repository": {
     "type": "git",
@@ -25,12 +20,7 @@
   "homepage": "https://github.com/hcode-courses/lab-hburguer#readme",
   "dependencies": {
     "firebase": "^8.2.9",
-<<<<<<< HEAD
     "imask": "^6.0.7"
-=======
-    "sass": "^1.32.8",
-    "serve": "^11.3.2"
->>>>>>> 8afb754efee5b43fb6a78b088d260aa37876c7bc
   },
   "devDependencies": {
     "sass": "^1.32.8",
