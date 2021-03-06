@@ -251,11 +251,17 @@ document.querySelectorAll('#make-burguer').forEach(page => {
 
         page.querySelector('#btn-save-burguer').addEventListener('click', e => {
 
-            clearBurguerSelection(page);
+            if (currentBurguer.ingredients.length < 1) {
+               
+                showAlertError('O hamburguer deve conter ao menos 1 ingrediente!');
+            } else {
 
-            updateLastBurguer = false;
+                clearBurguerSelection(page);
 
-            alert('Hambuguer salvo com sucesso!');
+                updateLastBurguer = false;
+
+                alert('Hambuguer salvo com sucesso!');
+            }
         });
         
         if (trayEl) {
