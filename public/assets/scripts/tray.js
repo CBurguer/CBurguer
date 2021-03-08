@@ -23,6 +23,8 @@ document.querySelectorAll('#make-burguer').forEach(page => {
             bread: null,
             ingredients: [],
         };
+
+        let updateLastBurguer = true;
         
         const renderBreadOptions = (context, breadOptions) => {
         
@@ -30,15 +32,17 @@ document.querySelectorAll('#make-burguer').forEach(page => {
         
             optionsEl.innerHTML = '';
         
-            breadOptions.forEach(item => {
+            breadOptions.forEach((item, index) => {
         
                 const label = appendToTemplate(optionsEl, 'li',
                 `<label>
-                    <input type="radio" name="item" />
+                    <input type="radio" name="item" ${index === 0 ? 'checked' : ''}/>
                     <span></span>
                     <h3>${item.name}</h3>
                     <div>${formatCurrency(item.price)}</div>
                 </label>`);
+
+                if (index === 0) currentBurguer.bread = item;
         
                 label.querySelector('[type=radio]').addEventListener('change', e => {
         
@@ -47,6 +51,9 @@ document.querySelectorAll('#make-burguer').forEach(page => {
                     } else {
                         currentBurguer.bread = null;
                     }
+
+                    saveCurrentBurger();
+                    updateLastBurguer = true;
                 });
             });
         }
@@ -78,30 +85,26 @@ document.querySelectorAll('#make-burguer').forEach(page => {
                             return ingredient.id != item.id
                         });
                     }
+
+                    saveCurrentBurger();
+                    updateLastBurguer = true;
                 });
             });
         }
         
         const saveCurrentBurger = () => {
-            
-            if (!currentBurguer.bread) {
-        
-                alert('Selecione um pão!');
-        
-            } else if (currentBurguer.ingredients.length < 1) {
-        
-                alert('Selecione ao menos um ingrediente!');
-        
-            } else {
-        
-                const tray = getTray();
-        
-                tray.push(currentBurguer);
-        
-                setTray(tray);
-        
-                renderTray();
+
+            const tray = getTray();
+
+            if (updateLastBurguer) {
+                tray.pop();
             }
+    
+            tray.push(currentBurguer);
+    
+            setTray(tray);
+    
+            renderTray();
         }
         
         const deleteBurguer = (index) => {
@@ -180,7 +183,7 @@ document.querySelectorAll('#make-burguer').forEach(page => {
           
             const tray = getTray();
         
-            if (tray.length < 1) {
+            if (tray[0].ingredients.length < 1) {
 
                 showAlertError('A bandeja deve conter ao menos 1 item!');
         
@@ -235,11 +238,31 @@ document.querySelectorAll('#make-burguer').forEach(page => {
             }, showAlertError);
         }
 
+        const clearBurguerSelection = (context) => {
+
+            currentBurguer.ingredients = [];
+
+            context.querySelectorAll('input[type=checkbox]').forEach(checkbox => checkbox.checked = false);
+        }
+
         loadBreads();
 
         loadIngredients();
 
-        page.querySelector('#btn-save-burguer').addEventListener('click', e => saveCurrentBurger());
+        page.querySelector('#btn-save-burguer').addEventListener('click', e => {
+
+            if (currentBurguer.ingredients.length < 1) {
+               
+                showAlertError('O hamburguer deve conter ao menos 1 ingrediente!');
+            } else {
+
+                clearBurguerSelection(page);
+
+                updateLastBurguer = false;
+
+                alert('Hambuguer salvo com sucesso!');
+            }
+        });
         
         if (trayEl) {
     
@@ -249,7 +272,7 @@ document.querySelectorAll('#make-burguer').forEach(page => {
     
             trayEl.querySelector('#btn-pay').addEventListener('click', e => saveOrder());
         }
-    
-        renderTray();
+
+        setTimeout(saveCurrentBurger, 1000);
     }
 });

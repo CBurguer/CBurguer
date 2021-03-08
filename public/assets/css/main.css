@@ -24,6 +24,7 @@ $secondary: rgba(#1B9AF6, .7); */
   --light: #D7D7D7;
   --white: #FFFFFF;
   --gray: #E3E3E3;
+  --red: #ff0000;
   --white10: rgba(255, 255, 255, 0.1);
   --white25: rgba(255, 255, 255, 0.25);
   --white90: rgba(255, 255, 255, 0.9);
@@ -462,6 +463,10 @@ body, div, section, main, article, header, footer, form, label {
 #app > section.page form select + select,
 #app > section.page form select + .fields {
   margin-top: var(--space);
+}
+#app > section.page form .field-error {
+  color: var(--red);
+  margin-bottom: 1rem;
 }
 #app > section.page form .fields {
   flex-direction: row;

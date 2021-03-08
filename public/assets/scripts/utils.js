@@ -8,57 +8,51 @@ export function getFormValues(form) {
     return values;
 }
 
+export function formatCurrency(value) {
+  return Intl.NumberFormat('pt-br', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(value)
+}
+
 export function appendToTemplate(element, tagName, html) 
 {
-    const wrappElement = document.createElement(tagName);
+  const wrappElement = document.createElement(tagName);
 
-    wrappElement.innerHTML = html;
+  wrappElement.innerHTML = html;
 
-    element.append(wrappElement);
+  element.append(wrappElement);
 
-    return wrappElement;
+  return wrappElement;
 }
 
 export function calculateBurgerTotal(burguer) 
 {
-    let total = 0;
+  let total = 0;
 
-    burguer.ingredients.forEach(ingredient => {
+  burguer.ingredients.forEach(ingredient => {
 
-        total = total + Number(ingredient.price)
-    });
+      total = total + Number(ingredient.price)
+  });
 
-    total = total + Number(burguer.bread.price);
+  total = total + Number(burguer.bread.price);
 
-    return total;
+  return total;
 }
 
 export function calculateTraySubTotal(tray)
 {
-    let total = 0;
+  let total = 0;
 
-    tray.forEach(burguer => {
+  tray.forEach(burguer => {
 
-        total = total + calculateBurgerTotal(burguer);
-    });
+      total = total + calculateBurgerTotal(burguer);
+  });
 
-    return total;
-}
-
-export function formatCurrency(value) 
-{
-    // return parseFloat(value).toLocaleString('pt-br', {
-    //     style: 'currency',
-    //     currency: 'BRL'
-    // });
-
-    return Intl.NumberFormat('pt-br', {
-        style: 'currency',
-        currency: 'BRL'
-    }).format(value);
+  return total;
 }
 
 export function showAlertError(message) {
 
-    alert(message);
+  alert(message);
 }

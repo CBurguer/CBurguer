@@ -31,3 +31,7 @@
     }
 }
 
+@mixin field-error {
+    color: var(--red);
+    margin-bottom: 1rem;
+}
