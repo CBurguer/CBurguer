@@ -59,6 +59,30 @@
         right: var(--space);
         @include components.avatar;
       }
+
+      .logout {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        left: var(--space);
+        top: 30px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+
+        .btnLogout {
+          color: white;
+          text-decoration: none;
+
+          &:hover {
+            img {
+              width: 32px;
+              height: 32px;
+            }
+          }
+        }
+      }
     }
     main {
       padding-bottom: 64px;
