@@ -30,17 +30,10 @@ document.querySelectorAll("#list-orders").forEach((list) => {
     };
 
     const getOrdersPrice = async (itemId) => {
-      // await db
-      //   .collection("payments")
-      //   .doc(itemId)
-      //   .get((snap) => {
-      //     console.log(formatCurrency(snap.data().total));
-      //   });
-
-      const res = await db.collection("payments").doc(itemId).get();
-      console.log(formatCurrency(res.data().total));
+      let res = await db.collection("payments").doc(itemId).get();
+      let result = await formatCurrency(res.data().total);
+      return result;
     };
-
 
     await db
       .collection("carts")
@@ -60,27 +53,17 @@ document.querySelectorAll("#list-orders").forEach((list) => {
             nome.push(item.name);
           });
 
-          // console.log(order.total);
-          //! let ingredientsTr;
-          //! for (let i = 1; i <= nome.length; i++) {
-          //!      let tr = document.createElement("Tr");
-          //!      tr.innerHTML = `
-          //!      <td>${nome}</td>
-          //! `};
-
-          // getOrdersPrice(item.id).then((res) => {});
-          //ingredientsTr.append(tr);
-          //console.log();
-          // modal(data[0].bread.name);
-          elemento(
-            newDatas,
-            getOrdersPrice(item.id),
-            ingredients.length,
-            numberAleatorio(0, 10000),
-            data[0].bread.name,
-            nome,
-            item.id
-          );
+          getOrdersPrice(item.id).then((res) => {
+            elemento(
+              newDatas,
+              res,
+              ingredients.length,
+              numberAleatorio(0, 10000),
+              data[0].bread.name,
+              nome,
+              item.id
+            );
+          });
         });
         //  teste();
       });
@@ -126,7 +109,7 @@ document.querySelectorAll("#list-orders").forEach((list) => {
                       </li>
                       <li>
                         <span>Valor:</span>
-                        <span>R$ ${valor}</span>
+                        <span> ${valor}</span>
                       </li>
                       <li>
                         <span>Itens:</span>
