@@ -5,9 +5,29 @@
   top: 0;
   height: 100vh;
   opacity: 0;
+  // opacity: 0;
+  color: #fff;
   z-index: -21;
   transition: 0.4s ease-in-out;
   background-color: #252424bd;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto 30px;
+}
+
+td,
+th {
+  border: 1px solid #48ae0e;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #504f4f;
 }
 
 .modalBackground {
@@ -48,26 +68,26 @@
   width: 100%;
 }
 
-table {
-  width: 95%;
-  margin: 0 auto;
-  border: 1px solid rgb(24, 208, 14);
-  //   border-collapse: collapse;
-  position: relative;
-  z-index: 5555;
-  height: 297px;
-}
-th,
-td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  color: #000;
-  text-align: center;
-}
+// table {
+//   width: 95%;
+//   margin: 0 auto;
+//   border: 1px solid rgb(24, 208, 14);
+//   //   border-collapse: collapse;
+//   position: relative;
+//   z-index: 5555;
+//   height: 297px;
+// }
+// th,
+// td {
+//   border: 1px solid black;
+//   border-collapse: collapse;
+//   color: #000;
+//   text-align: center;
+// }
 
-tr {
-  background-color: #fff;
-}
+// tr {
+//   background-color: #fff;
+// }
 @media (min-width: 765px) {
   table {
     width: 65%;

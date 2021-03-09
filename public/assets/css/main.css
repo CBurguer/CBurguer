@@ -244,6 +244,76 @@ body, div, section, main, article, header, footer, form, label {
   background-size: cover;
   filter: brightness(0.8);
 }
+#app > section > header::before.page form {
+  padding: var(--space);
+}
+#app > section > header::before.page form input, #app > section > header::before.page form select {
+  height: 50px;
+  width: 100%;
+  border: var(--light) 1px solid;
+  border-radius: var(--radius);
+  color: var(--dark);
+  font-size: 16px;
+  padding: 0 var(--space);
+  outline: none;
+}
+#app > section > header::before.page form input::placeholder, #app > section > header::before.page form select::placeholder {
+  color: var(--light);
+}
+#app > section > header::before.page form input:focus, #app > section > header::before.page form select:focus {
+  border-color: var(--primary);
+}
+#app > section > header::before.page form input + input, #app > section > header::before.page form input + select, #app > section > header::before.page form input + .fields, #app > section > header::before.page form select + input, #app > section > header::before.page form select + select, #app > section > header::before.page form select + .fields {
+  margin-top: var(--space);
+}
+#app > section > header::before.page form .field-error {
+  color: var(--red);
+  margin-bottom: 1rem;
+}
+#app > section > header::before.page form .fields {
+  flex-direction: row;
+}
+#app > section > header::before.page form .fields .field {
+  flex: 1;
+  margin-right: 10px;
+}
+#app > section > header::before.page form .fields .field + .field {
+  margin-right: 0;
+  margin-left: 10px;
+}
+#app > section > header::before.page form .fields + input, #app > section > header::before.page form .fields + select {
+  margin-top: var(--space);
+}
+#app > section > header::before.page section, #app > section > header::before.page footer {
+  background-color: var(--white);
+}
+#app > section > header::before.page footer button {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#app > section > header::before.page footer button svg {
+  margin-right: 10px;
+}
+@media (min-width: 768px) {
+  #app > section > header::before.page {
+    width: 100%;
+    align-items: center;
+  }
+  #app > section > header::before.page main {
+    align-items: center;
+  }
+  #app > section > header::before.page main > section {
+    padding-bottom: 64px;
+  }
+  #app > section > header::before.page main section, #app > section > header::before.page footer {
+    max-width: 768px;
+    width: 100%;
+  }
+}
 #app > section > header a {
   position: relative;
 }
@@ -444,10 +514,6 @@ body, div, section, main, article, header, footer, form, label {
 #app > section.page form select + select,
 #app > section.page form select + .fields {
   margin-top: var(--space);
-}
-#app > section.page form .field-error {
-  color: var(--red);
-  margin-bottom: 1rem;
 }
 #app > section.page form .fields {
   flex-direction: row;
@@ -886,9 +952,28 @@ body, div, section, main, article, header, footer, form, label {
   top: 0;
   height: 100vh;
   opacity: 0;
+  color: #fff;
   z-index: -21;
   transition: 0.4s ease-in-out;
   background-color: #252424bd;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto 30px;
+}
+
+td,
+th {
+  border: 1px solid #48ae0e;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #504f4f;
 }
 
 .modalBackground {
@@ -929,27 +1014,6 @@ body, div, section, main, article, header, footer, form, label {
   justify-content: center;
   align-items: center;
   width: 100%;
-}
-
-table {
-  width: 95%;
-  margin: 0 auto;
-  border: 1px solid #18d00e;
-  position: relative;
-  z-index: 5555;
-  height: 297px;
-}
-
-th,
-td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  color: #000;
-  text-align: center;
-}
-
-tr {
-  background-color: #fff;
 }
 
 @media (min-width: 765px) {
