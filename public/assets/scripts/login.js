@@ -1,5 +1,5 @@
 import firebase from "./firebase-app";
-import { getFormValues } from "./utils";
+import { getFormValues, showAlertError } from "./utils";
 
 const authPage = document.querySelector("body#auth");
 
@@ -23,6 +23,7 @@ if (authPage) {
         })
         .catch((err) => {
           console.log("err", err);
+          showAlertError(err.message);
         });
     });
   }
@@ -46,6 +47,7 @@ if (authPage) {
         })
         .catch((err) => {
           console.log("err", err);
+          showAlertError(err.message);
         });
     });
   }
@@ -63,6 +65,7 @@ if (authPage) {
         })
         .catch((err) => {
           console.log("err", err);
+          showAlertError(err.message)
         });
     });
   }

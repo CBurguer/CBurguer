@@ -10,11 +10,19 @@ export function verifyAuth(renderPage) {
     })
 }
 
-export function logout() {
-    auth.signOut()
-        .then(logout => {
-            location.href = '/login.html'
-        }).catch(err => {
-            console.log(err)
-        })
+const btnLogout = document.querySelector('header > .logout');
+
+if (btnLogout) {
+
+    btnLogout.addEventListener('click', e => {
+
+        e.preventDefault();
+        
+        firebase.auth().signOut()
+            .then(logout => {
+                location.href = '/login.html';
+            }).catch(err => {
+                console.log(err);
+            });
+    });
 }
