@@ -32,8 +32,11 @@ document.querySelectorAll("#list-orders").forEach((list) => {
     const getOrdersPrice = async (itemId) => {
       let res = await db.collection("payments").doc(itemId).get();
       let result = await formatCurrency(res.data().total);
-      return result;
+      console.log(res.data());
+      //     return result;
     };
+
+    getOrdersPrice("71rcObyxvgiqcFh5aKY5").then((res) => console.log(res));
 
     await db
       .collection("carts")
@@ -43,27 +46,40 @@ document.querySelectorAll("#list-orders").forEach((list) => {
         snap.forEach((item, index) => {
           let data = item.data().items;
 
-          // console.log(datas);
-          let datas = new Date(item.data().created.seconds * 1000);
-          let newDatas = datas.toLocaleDateString("pt-BR");
+          console.log(item.id);
 
-          let nome = [];
-          let ingredients = data[0].ingredients;
-          ingredients.forEach((item) => {
-            nome.push(item.name);
-          });
+          getOrdersPrice(item.id)
+            .then((res) => {
+              console.log(res);
 
-          getOrdersPrice(item.id).then((res) => {
-            elemento(
-              newDatas,
-              res,
-              ingredients.length,
-              numberAleatorio(0, 10000),
-              data[0].bread.name,
-              nome,
-              item.id
-            );
-          });
+              if (res) {
+                data.forEach((burguer) => {
+                  console.log(burguer);
+                  //   return
+                  let datas = new Date(item.data().created.seconds * 1000);
+                  let newDatas = datas.toLocaleDateString("pt-BR");
+
+                  let nome = [];
+                  let ingredients = burguer.ingredients;
+                  ingredients.forEach((item) => {
+                    nome.push(item.name);
+                  });
+
+                  elemento(
+                    newDatas,
+                    res,
+                    ingredients.length,
+                    numberAleatorio(0, 10000),
+                    burguer.bread.name,
+                    nome,
+                    burguer.id
+                  );
+                });
+              } else {
+                console.log("erro");
+              }
+            })
+            .catch((err) => console.log(err));
         });
         //  teste();
       });
@@ -92,8 +108,7 @@ document.querySelectorAll("#list-orders").forEach((list) => {
                         </tr>
                         <tr>
                           <td>${ingredients}</td>
-                        </tr>
-                       
+                        </tr> 
                       </table>
                     </main>
                   </div>
