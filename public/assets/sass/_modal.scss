@@ -10,6 +10,7 @@
   z-index: -21;
   transition: 0.4s ease-in-out;
   background-color: #252424bd;
+  overflow: auto;
 }
 
 table {
@@ -51,13 +52,13 @@ tr:nth-child(even) {
   cursor: pointer;
   right: 35px;
   top: 37px;
-  font-size: 52px;
-  width: 85px;
+  font-size: 25px;
+  width: 60px;
   /* text-align: center; */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 85px;
+  height: 60px;
 }
 .modal {
   background-color: #252424bd;

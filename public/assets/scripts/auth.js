@@ -10,7 +10,7 @@ export function verifyAuth(renderPage) {
     })
 }
 
-const btnLogout = document.querySelector('header > .logout');
+const btnLogout = document.querySelector('header .logout');
 
 if (btnLogout) {
 
