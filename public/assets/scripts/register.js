@@ -59,7 +59,12 @@ document.querySelectorAll("#form-register").forEach((page) => {
   });
 
   btnSubmit.addEventListener("click", (e) => {
+
     e.preventDefault();
+
+    e.target.innerText = 'Carregando...';
+    e.target.disabled = true;
+
     const auth = firebase.auth();
 
     const formAuthRegister = document.getElementById("form-register");
@@ -88,6 +93,10 @@ document.querySelectorAll("#form-register").forEach((page) => {
       .catch((err) => {
         console.log("err", err);
         showAlertError(err.message);
+      })
+      .finally(() => {
+        e.target.innerText = 'Enviar';
+        e.target.disabled = false;
       });
   });
 });
