@@ -69,17 +69,20 @@ document.querySelectorAll("#form-register").forEach((page) => {
       .createUserWithEmailAndPassword(values.email, values.password)
       .then((response) => {
         if (imageElement.src) {
-          console.log(imageElement.src);
           cropper.getCroppedCanvas().toBlob((blob) => {
+            
             const storage = firebase.storage();
-            const fileRef = storage.ref().child(`${response.user.uid}.png`);
-            fileRef
-              .put(blob)
-              .then((snapshot) => snapshot.ref.getDownloadURL())
-              .then((url) => (window.location.href = "login.html"));
+
+            const fileRef = storage.ref().child(`users/${response.user.uid}.png`);
 
             cropper.destroy();
+
+            fileRef
+              .put(blob)
+              .then((snapshot) => window.location.href = "login.html");
           });
+        } else {
+          window.location.href = "login.html";
         }
       })
       .catch((err) => {
