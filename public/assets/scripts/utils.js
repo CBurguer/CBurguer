@@ -52,7 +52,13 @@ export function calculateTraySubTotal(tray)
   return total;
 }
 
-export function showAlertError(message) {
+export function showAlertError(message) 
+{
 
   alert(message);
+}
+
+export function randomOrderNumber(min, max)
+{
+    return Math.floor(Math.random() * (max - min) + min);
 }

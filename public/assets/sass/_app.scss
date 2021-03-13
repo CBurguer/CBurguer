@@ -39,50 +39,56 @@
             url("../images/photo-green.jpg");
         }
         &.page {
-            form {
-                @include form.panel;
-                input, select {
-                    @include form.field;
-                    + input, + select, + .fields {
-                        margin-top: var(--space);
-                    }
-                }
-                .field-error {
-                    @include form.field-error;
-                }
-                .fields {
-                    @include form.fields;
-                    + input, + select {
-                        margin-top: var(--space);
-                    }
-                }
+          form {
+            @include form.panel;
+            input,
+            select {
+              @include form.field;
+              + input,
+              + select,
+              + .fields {
+                margin-top: var(--space);
+              }
             }
-            section, footer {
-                background-color: var(--white);
+            .field-error {
+              @include form.field-error;
             }
-            footer button {
-                width: 100%;
-                height: 100%;
-                border-radius: 0;
-                @include mixins.flex-center;
-                svg {
-                    margin-right: 10px;
-                }
+            .fields {
+              @include form.fields;
+              + input,
+              + select {
+                margin-top: var(--space);
+              }
             }
-            @media (min-width: vars.$desktopStartWidth) {
-                width: 100%;
-                align-items: center;
-                main {
-                    align-items: center;
-                    > section {
-                        padding-bottom: 64px;
-                    }
-                }
-                main section, footer {
-                    max-width: vars.$desktopStartWidth;
-                    width: 100%;
-                }
+          }
+          section,
+          footer {
+            background-color: var(--white);
+          }
+          footer button {
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            @include mixins.flex-center;
+            svg {
+              margin-right: 10px;
             }
+          }
+          @media (min-width: vars.$desktopStartWidth) {
+            width: 100%;
+            align-items: center;
+            main {
+              align-items: center;
+              > section {
+                padding-bottom: 64px;
+              }
+            }
+            main section,
+            footer {
+              max-width: vars.$desktopStartWidth;
+              width: 100%;
+            }
+          }
         }
         background-repeat: no-repeat;
         background-size: cover;
@@ -92,9 +98,8 @@
         position: relative;
       }
       #avatar {
-        position: absolute;
-        top: var(--space);
-        right: var(--space);
+        position: flex;
+
         @include components.avatar;
       }
 
