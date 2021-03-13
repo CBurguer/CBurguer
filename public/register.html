@@ -7,10 +7,34 @@
   <meta name="description" content="Projeto Hburger do Hcode Lab" />
   <title>Cadastro - CBurguer</title>
   <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/cropper.min.css" />
+
   <link rel="shortcut icon" href="assets/images/logo-favicon-green.svg" type="image/x-icon" />
 </head>
 
 <body id="auth" class="auth">
+
+  <div class="modal-change">
+
+    <div class="container">
+
+      <div>       
+        <img class="image" src="" alt="image" />
+       
+          <label class="upload-file">
+            Selecione a imagem
+            
+          </label>
+
+        <a href="#">
+          <img class="checked" src="./assets/images/checked.svg" alt="checked" />         
+        </a>
+      </div>
+
+    </div>
+    
+  </div>
+
   <header>
     <a href="index.html">
       <img src="assets/images/logo-icon-green.svg" alt="Logo Icone" id="logo-icon" />
@@ -25,9 +49,19 @@
     </ul>
 
    
-  <form id="form-register"> <input type="text" name="name" placeholder="Nome" required /> <input type="email" name="email"
+  <form id="form-register"> 
+    <input type="text" name="name" placeholder="Nome" required /> <input type="email" name="email"
       placeholder="E-mail" required /> <input type="password" name="password" placeholder="Senha" required />
-    <footer> <button type="submit">Enviar</button> </footer>
+    <footer> 
+   
+      <div>
+       <img src="./assets/images/user.svg" width="50px" height="50px" alt="icon avatar" id="icon-avatar" />
+       <small>Avatar CBurger</small>
+        <input type="file" name="upload" id="upload-image" style="display: none;" />
+      </div>
+              
+      <button type="submit">Enviar</button> 
+    </footer>
   </form>
   </main>
   <script src="bundle.js"></script>

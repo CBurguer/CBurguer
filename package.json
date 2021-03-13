@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/hcode-courses/lab-hburguer#readme",
   "dependencies": {
+    "cropperjs": "^1.5.11",
     "firebase": "^8.2.9",
     "imask": "^6.0.7"
   },

@@ -4,21 +4,22 @@ $desktopStartWidth: 768px;
 $asideWidth: 350px;
 
 :root {
-    --radius: 10px;
-    --space: 20px;
-    --bar-height: 64px;
-    --field-height: 48px;
+  --radius: 10px;
+  --space: 20px;
+  --bar-height: 64px;
+  --field-height: 48px;
 
-    --primary: #{colors.$primary};
-    --primaryText: #{colors.$primaryText};
-    --secondary: #{colors.$secondary};
-    --dark: #{colors.$dark};
-    --light: #{colors.$light};
-    --white: #{colors.$white};
-    --gray: #{colors.$gray};
-    --red: #{colors.$red};
+  --primary: #{colors.$primary};
+  --primaryText: #{colors.$primaryText};
+  --secondary: #{colors.$secondary};
+  --dark: #{colors.$dark};
+  --light: #{colors.$light};
+  --white: #{colors.$white};
+  --gray: #{colors.$gray};
+  --red: #{colors.$red};
+  --theme: #{colors.$theme};
 
-    --white10: #{colors.$white10};
-    --white25: #{colors.$white25};
-    --white90: #{colors.$white90};
+  --white10: #{colors.$white10};
+  --white25: #{colors.$white25};
+  --white90: #{colors.$white90};
 }

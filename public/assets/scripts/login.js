@@ -10,24 +10,6 @@ if (authPage) {
   const formAuthLogin = document.getElementById("form-login");
   const forgotThePassword = document.getElementById("form-forget");
 
-  if (formAuthRegister) {
-    formAuthRegister.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const values = getFormValues(formAuthRegister);
-
-      auth
-        .createUserWithEmailAndPassword(values.email, values.password)
-        .then((response) => {
-          console.log("response", response);
-          window.location.href = "login.html";
-        })
-        .catch((err) => {
-          console.log("err", err);
-          showAlertError(err.message);
-        });
-    });
-  }
-
   if (formAuthLogin) {
     formAuthLogin.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -65,7 +47,7 @@ if (authPage) {
         })
         .catch((err) => {
           console.log("err", err);
-          showAlertError(err.message)
+          showAlertError(err.message);
         });
     });
   }
