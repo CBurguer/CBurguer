@@ -8,10 +8,17 @@ if (header) {
   var close = document.querySelector(".close-menu");
   var contact = document.querySelector("#contact-link");
   var email = document.querySelector('.email');
+  const avatar = document.querySelector('header #avatar');
 
   firebase.auth().onAuthStateChanged(user => {
+
       if (user) {
-        email.innerHTML = user.email
+
+        email.innerHTML = user.email;
+        
+        firebase.storage().ref(`users/${user.uid}.png`).getDownloadURL().then(url => {
+          if (url) avatar.src = url;
+        });
       }
   })
 

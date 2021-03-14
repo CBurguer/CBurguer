@@ -62,7 +62,7 @@ document.querySelectorAll("#form-register").forEach((page) => {
 
     e.preventDefault();
 
-    e.target.innerText = 'Carregando...';
+    e.target.innerText = 'Enviando...';
     e.target.disabled = true;
 
     const auth = firebase.auth();
@@ -73,7 +73,7 @@ document.querySelectorAll("#form-register").forEach((page) => {
     auth
       .createUserWithEmailAndPassword(values.email, values.password)
       .then((response) => {
-        if (imageElement.src) {
+        if (cropper) {
           cropper.getCroppedCanvas().toBlob((blob) => {
             
             const storage = firebase.storage();
