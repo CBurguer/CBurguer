@@ -319,7 +319,8 @@ label {
 #app > section > header::before.page form {
   padding: var(--space);
 }
-#app > section > header::before.page form input, #app > section > header::before.page form select {
+#app > section > header::before.page form input,
+#app > section > header::before.page form select {
   height: 50px;
   width: 100%;
   border: var(--light) 1px solid;
@@ -329,13 +330,20 @@ label {
   padding: 0 var(--space);
   outline: none;
 }
-#app > section > header::before.page form input::placeholder, #app > section > header::before.page form select::placeholder {
+#app > section > header::before.page form input::placeholder,
+#app > section > header::before.page form select::placeholder {
   color: var(--light);
 }
-#app > section > header::before.page form input:focus, #app > section > header::before.page form select:focus {
+#app > section > header::before.page form input:focus,
+#app > section > header::before.page form select:focus {
   border-color: var(--primary);
 }
-#app > section > header::before.page form input + input, #app > section > header::before.page form input + select, #app > section > header::before.page form input + .fields, #app > section > header::before.page form select + input, #app > section > header::before.page form select + select, #app > section > header::before.page form select + .fields {
+#app > section > header::before.page form input + input,
+#app > section > header::before.page form input + select,
+#app > section > header::before.page form input + .fields,
+#app > section > header::before.page form select + input,
+#app > section > header::before.page form select + select,
+#app > section > header::before.page form select + .fields {
   margin-top: var(--space);
 }
 #app > section > header::before.page form .field-error {
@@ -353,10 +361,12 @@ label {
   margin-right: 0;
   margin-left: 10px;
 }
-#app > section > header::before.page form .fields + input, #app > section > header::before.page form .fields + select {
+#app > section > header::before.page form .fields + input,
+#app > section > header::before.page form .fields + select {
   margin-top: var(--space);
 }
-#app > section > header::before.page section, #app > section > header::before.page footer {
+#app > section > header::before.page section,
+#app > section > header::before.page footer {
   background-color: var(--white);
 }
 #app > section > header::before.page footer button {
@@ -381,7 +391,8 @@ label {
   #app > section > header::before.page main > section {
     padding-bottom: 64px;
   }
-  #app > section > header::before.page main section, #app > section > header::before.page footer {
+  #app > section > header::before.page main section,
+#app > section > header::before.page footer {
     max-width: 768px;
     width: 100%;
   }
@@ -390,11 +401,9 @@ label {
   position: relative;
 }
 #app > section > header #avatar {
-  position: absolute;
-  top: var(--space);
-  right: var(--space);
-  width: 50px;
-  height: 50px;
+  position: flex;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
   cursor: pointer;
@@ -1047,6 +1056,7 @@ label {
   z-index: -21;
   transition: 0.4s ease-in-out;
   background-color: #252424bd;
+  overflow: auto;
 }
 
 table {
@@ -1089,13 +1099,13 @@ tr:nth-child(even) {
   cursor: pointer;
   right: 35px;
   top: 37px;
-  font-size: 52px;
-  width: 85px;
+  font-size: 25px;
+  width: 60px;
   /* text-align: center; */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 85px;
+  height: 60px;
 }
 
 .modal {
@@ -1111,6 +1121,83 @@ tr:nth-child(even) {
   table {
     width: 65%;
   }
+}
+.header > div {
+  width: 100%;
+}
+.header > div .menu {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 320px;
+  left: -100vw;
+  background-color: #070d0d;
+  justify-content: center;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.52, 0.16, 0.24, 1);
+  z-index: 3;
+}
+.header > div .menu .close-menu {
+  position: absolute;
+  top: 32px;
+  right: 36px;
+  height: 28px;
+  width: 28px;
+  cursor: pointer;
+}
+.header > div .menu .close-menu svg {
+  width: 100%;
+  fill: var(--white);
+}
+.header > div .menu .menu-wrap {
+  height: 500px;
+  padding: 0;
+  margin: 0;
+  margin-top: 80px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.header > div .menu .menu-wrap > div a,
+.header > div .menu .menu-wrap > div p {
+  text-decoration: none;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+}
+.header > div .menu .menu-wrap > div a:hover,
+.header > div .menu .menu-wrap > div p:hover {
+  color: var(--primary);
+}
+.header > div .menu .menu-wrap > div button {
+  background-color: red;
+  border-style: none;
+  width: 130px;
+  height: 30px;
+  color: #fff;
+  margin: 5px 5px;
+}
+.header > div .open-menu {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+}
+.header > div .open-menu svg {
+  width: 40px;
+  fill: var(--white);
+}
+
+#header-home {
+  position: absolute;
+  z-index: 3;
+  background-color: initial;
+}
+
+.menu-open > div .menu {
+  left: 0;
 }
 
 /*# sourceMappingURL=main.css.map */

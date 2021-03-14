@@ -89,7 +89,7 @@ document.querySelectorAll('section#pay').forEach(page => {
                     if (!alertEl) {
                         e.insertAdjacentHTML(
                             'afterend', 
-                            `<small id='${e.name}' class='field-error'>${error}</small>`
+                            `<small id='${e.name}' style='color:#ff0000; margin-bottom:1rem;'>${error}</small>`
                         )
                         e.style.borderColor = '#ff0000'
                     }
