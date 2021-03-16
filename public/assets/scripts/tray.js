@@ -129,14 +129,18 @@ document.querySelectorAll('#make-burguer').forEach(page => {
             const tray = getTray();
         
             tray.forEach((item, index) => {
+
+                console.log(tray.length, index);
         
                 index += 1;
+
+                const addGreenColor = index === tray.length ? "style='color:green'" : '';
         
                 const total = calculateBurgerTotal(item);
         
                 const li = appendToTemplate(listEl, 'li',
-                    `<div>Hamburguer ${index}</div>
-                        <div>${formatCurrency(total)}</div>
+                    `<div ${addGreenColor}>Hamburguer ${index}</div>
+                        <div ${addGreenColor}>${formatCurrency(total)}</div>
                         <button type="button" id="btn-delete" aria-label="Remover Hamburguer ${index}">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4Z" fill="black"/>
