@@ -31,11 +31,12 @@ export function calculateBurgerTotal(burguer)
   let total = 0;
 
   burguer.ingredients.forEach(ingredient => {
-
       total = total + Number(ingredient.price)
   });
 
-  total = total + Number(burguer.bread.price);
+  if (burguer.bread) {
+    total = total + Number(burguer.bread.price);
+  }
 
   return total;
 }
