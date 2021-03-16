@@ -18,7 +18,7 @@ document.querySelectorAll('#make-burguer').forEach(page => {
 
         const db = firebase.firestore();
         const trayEl = document.querySelector('#tray');
-    
+
         const currentBurguer = {
             bread: null,
             ingredients: [],
@@ -36,13 +36,11 @@ document.querySelectorAll('#make-burguer').forEach(page => {
         
                 const label = appendToTemplate(optionsEl, 'li',
                 `<label>
-                    <input type="radio" name="item" ${index === 0 ? 'checked' : ''}/>
+                    <input type="radio" name="item"/>
                     <span></span>
                     <h3>${item.name}</h3>
                     <div>${formatCurrency(item.price)}</div>
                 </label>`);
-
-                if (index === 0) currentBurguer.bread = item;
         
                 label.querySelector('[type=radio]').addEventListener('change', e => {
         
@@ -129,8 +127,6 @@ document.querySelectorAll('#make-burguer').forEach(page => {
             const tray = getTray();
         
             tray.forEach((item, index) => {
-
-                console.log(tray.length, index);
         
                 index += 1;
 
@@ -186,8 +182,8 @@ document.querySelectorAll('#make-burguer').forEach(page => {
         const saveOrder = async () => {
           
             const tray = getTray();
-        
-            if (tray[0].ingredients.length < 1) {
+
+            if (!tray || tray.length < 1 || tray[0].ingredients.length < 1) {
 
                 showAlertError('A bandeja deve conter ao menos 1 item!');
         
@@ -276,7 +272,5 @@ document.querySelectorAll('#make-burguer').forEach(page => {
     
             trayEl.querySelector('#btn-pay').addEventListener('click', e => saveOrder());
         }
-
-        setTimeout(saveCurrentBurger, 1000);
     }
 });
