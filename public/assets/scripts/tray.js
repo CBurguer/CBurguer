@@ -146,9 +146,9 @@ document.querySelectorAll('#make-burguer').forEach(page => {
 
                 const li = appendToTemplate(listEl, 'li',
                     `<div class="hambuguer">
-                        <div ${addGreenColor}>Hamburguer ${index}</div>
+                        <div ${addGreenColor}>CBurguer ${index}</div>
                         <div ${addGreenColor}>${formatCurrency(total)}</div>
-                        <button type="button" id="btn-delete" aria-label="Remover Hamburguer ${index}">
+                        <button type="button" id="btn-delete" aria-label="Remover CBurguer ${index}">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4Z" fill="black"/>
                             </svg>
@@ -169,15 +169,15 @@ document.querySelectorAll('#make-burguer').forEach(page => {
         
             if (tray.length === 0) {
         
-                smallEl.innerText = 'Nenhum hamburguer';
+                smallEl.innerText = 'Nenhum CBurguer';
         
             } else if (tray.length == 1) {
         
-                smallEl.innerText = '1 hamburguer';
+                smallEl.innerText = '1 CBurguer';
         
             } else {
         
-                smallEl.innerText = tray.length + ' hamburgueres';
+                smallEl.innerText = tray.length + ' CBurguers';
             }
         }
         
@@ -203,7 +203,7 @@ document.querySelectorAll('#make-burguer').forEach(page => {
 
             if (!tray || tray.length < 1) {
 
-                showAlertError('A bandeja deve conter ao menos 1 item!');
+                showAlertError('A bandeja deve conter ao menos 1 CBurguer!');
                 trayIsValid = false;
             } 
             
@@ -211,7 +211,7 @@ document.querySelectorAll('#make-burguer').forEach(page => {
 
                 if (!item.bread || item.ingredients.length < 1) {
 
-                    showAlertError(`O hamburguer ${index + 1} é inválido! Finalize sua seleção ou exclua-o da bandeja!`);
+                    showAlertError(`O CBurguer ${index + 1} é inválido! Finalize sua seleção ou exclua-o da bandeja!`);
                     trayIsValid = false;
                     return;
                 }
@@ -283,9 +283,9 @@ document.querySelectorAll('#make-burguer').forEach(page => {
         page.querySelector('#btn-save-burguer').addEventListener('click', e => {
 
             if (!currentBurguer.bread) {
-                showAlertError('O hamburguer deve conter um pão!');
+                showAlertError('O CBurguer deve conter um pão!');
             } else if (currentBurguer.ingredients.length < 1) {
-                showAlertError('O hamburguer deve conter ao menos 1 ingrediente!');
+                showAlertError('O CBurguer deve conter ao menos 1 ingrediente!');
             } else {
 
                 clearBurguerSelection(page);
