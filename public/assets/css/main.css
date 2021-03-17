@@ -76,11 +76,18 @@ label {
 }
 #auth .modal-change .container {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   width: 320px;
   height: 380px;
   background-color: white;
+}
+#auth .modal-change .container .cancel {
+  position: absolute;
+  cursor: pointer;
+  top: 8px;
+  right: 8px;
 }
 #auth .modal-change .container div {
   align-items: center;
@@ -706,7 +713,7 @@ label {
 }
 #app aside section {
   height: 0;
-  overflow: hidden;
+  overflow: auto;
 }
 #app aside section ul {
   margin: 0;
@@ -714,6 +721,12 @@ label {
   list-style: none;
 }
 #app aside section ul li {
+  display: flex;
+  flex-direction: column;
+  border-bottom: var(--dark) 1px dotted;
+  margin-bottom: 10px;
+}
+#app aside section ul li .hambuguer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -723,7 +736,12 @@ label {
   cursor: pointer;
   transition: none;
   height: 48px;
-  border-bottom: var(--dark) 1px dotted;
+}
+#app aside section ul li .items {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 #app aside section ul li:hover div {
   opacity: 0.7;
