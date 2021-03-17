@@ -1,7 +1,6 @@
 import "./main";
 import "./header";
 import "./auth";
-import "./login";
+import "./register";
 import "./tray";
 import "./pay";
-import "./register";
