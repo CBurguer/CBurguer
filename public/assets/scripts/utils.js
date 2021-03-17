@@ -1,3 +1,5 @@
+import firebase from "./firebase-app";
+
 export function getFormValues(form) {
     const values = {};
 
@@ -62,4 +64,20 @@ export function showAlertError(message)
 export function randomOrderNumber(min, max)
 {
     return Math.floor(Math.random() * (max - min) + min);
+}
+
+export function loginUser(email, password)
+{
+  return firebase.auth()
+    .signInWithEmailAndPassword(email, password)
+    .then((response) => {
+
+      const { user } = response;
+
+      if (user != null) {
+        window.location.href = "index.html";
+      }
+
+    })
+    .catch((err) => showAlertError(err.message))
 }

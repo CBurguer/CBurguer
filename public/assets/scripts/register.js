@@ -1,6 +1,6 @@
 import firebase from "./firebase-app";
 import Cropper from "cropperjs";
-import { getFormValues, showAlertError } from "./utils";
+import { getFormValues, showAlertError, loginUser } from "./utils";
 
 document.querySelectorAll("#form-register").forEach((page) => {
   const inputFile = document.querySelector("#upload-image");
@@ -89,16 +89,13 @@ document.querySelectorAll("#form-register").forEach((page) => {
 
             fileRef
               .put(blob)
-              .then((snapshot) => (window.location.href = "login.html"));
+              .then((snapshot) => loginUser(values.email, values.password));
           });
         } else {
-          window.location.href = "login.html";
+          loginUser(values.email, values.password);
         }
       })
-      .catch((err) => {
-        console.log("err", err);
-        showAlertError(err.message);
-      })
+      .catch((err) => showAlertError(err.message))
       .finally(() => {
         e.target.innerText = "Enviar";
         e.target.disabled = false;

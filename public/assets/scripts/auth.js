@@ -1,4 +1,5 @@
 import firebase from './firebase-app'
+import { getFormValues, loginUser, showAlertError } from "./utils";
 
 export function verifyAuth(renderPage) {
     firebase.auth().onAuthStateChanged(user => {
@@ -8,6 +9,62 @@ export function verifyAuth(renderPage) {
             location.href = '/login.html'
         }
     })
+}
+
+const authPage = document.querySelector("body#auth");
+
+if (authPage) {
+
+    const auth = firebase.auth();
+
+    const formAuthLogin = document.getElementById("form-login");
+    const forgotThePassword = document.getElementById("form-forget");
+
+    if (formAuthLogin) {
+
+        const btnSubmit = formAuthLogin.querySelector('button[type=submit]');
+
+        formAuthLogin.addEventListener("submit", async (e) => {
+
+            e.preventDefault();
+
+            btnSubmit.disabled = true;
+            btnSubmit.innerText = 'Enviando...';
+
+            const values = getFormValues(formAuthLogin);
+
+            await loginUser(values.email, values.password);
+
+            btnSubmit.disabled = false;
+            btnSubmit.innerText = 'Enviar';
+        });
+    }
+
+    if (forgotThePassword) {
+
+        const btnSubmit = forgotThePassword.querySelector('button[type=submit]');
+
+        forgotThePassword.addEventListener("submit", (e) => {
+
+            e.preventDefault();
+
+            btnSubmit.disabled = true;
+            btnSubmit.innerText = 'Enviando...';
+            
+            const values = getFormValues(forgotThePassword);
+
+            auth.sendPasswordResetEmail(values.email)
+                .then((response) => {
+                    alert('Mensagem enviada! Verifique seu E-mail!');
+                    window.location.href = "login.html";
+                })
+                .catch((err) => showAlertError(err.message))
+                .finally(() => {
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerText = 'Enviar';
+                });
+        });
+    }
 }
 
 const btnLogout = document.querySelector('header .logout');
