@@ -292,7 +292,7 @@ document.querySelectorAll('#make-burguer').forEach(page => {
 
                 updateLastBurguer = false;
 
-                alert('Hambuguer salvo com sucesso!');
+                alert('CBurguer salvo com sucesso!');
             }
         });
         

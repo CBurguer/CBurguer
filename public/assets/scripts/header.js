@@ -1,13 +1,13 @@
 import firebase from './firebase-app'
 
-var header = document.querySelector(".header");
+const header = document.querySelector(".header");
 
 if (header) {
 
-  var open = document.querySelector(".open-menu");
-  var close = document.querySelector(".close-menu");
-  var contact = document.querySelector("#contact-link");
-  var email = document.querySelector('.email');
+  const open = document.querySelector(".open-menu");
+  const close = document.querySelector(".close-menu");
+  const contact = document.querySelector("#contact-link");
+  const email = document.querySelector('.email');
   const avatar = document.querySelector('header #avatar');
 
   firebase.auth().onAuthStateChanged(user => {
