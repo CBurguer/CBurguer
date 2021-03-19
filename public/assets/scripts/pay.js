@@ -2,7 +2,7 @@ import { formatCurrency } from './utils'
 import { verifyAuth, logout } from './auth'
 import firebase from './firebase-app'
 import IMask from 'imask'
-import moment from 'moment';
+// import moment from 'moment';
 
 document.querySelectorAll('section#pay').forEach(page => {
     

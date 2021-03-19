@@ -1,6 +1,6 @@
 import firebase from "./firebase-app";
 import Cropper from "cropperjs";
-import { getFormValues, showAlertError, translateMessage } from "./utils";
+import { getFormValues, translateMessage, loginUser } from "./utils";
 
 document.querySelectorAll("#form-register").forEach((page) => {
   const inputFile = document.querySelector("#upload-image");

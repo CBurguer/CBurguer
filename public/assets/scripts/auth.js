@@ -58,7 +58,9 @@ if (authPage) {
                     alert('Mensagem enviada! Verifique seu E-mail!');
                     window.location.href = "login.html";
                 })
-                .catch((err) => showAlertError(err.message))
+                .catch((err) => {
+                    showAlertError('Não há registro de usuário correspondente a este identificador. O usuário pode ter sido excluído.')
+                })
                 .finally(() => {
                     btnSubmit.disabled = false;
                     btnSubmit.innerText = 'Enviar';

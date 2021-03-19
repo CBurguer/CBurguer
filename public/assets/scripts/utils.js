@@ -18,10 +18,14 @@ export function formatCurrency(value) {
 }
 
 export function translateMessage(message) {
+
+  console.log(message);
   if (message == 'auth/invalid-email') {
     alert('O endereço de e-mail está formatado incorretamente.')
   } else if (message == 'auth/weak-password') {
     alert('A senha deve ter 6 caracteres ou mais.')
+  } else if (message == 'auth/email-already-in-use') {
+    alert('E-mail informado já cadastrado.')
   } else {
     alert('Houve algum erro no formulário, verifique e tente novamente.')
   }
@@ -89,5 +93,5 @@ export function loginUser(email, password)
       }
 
     })
-    .catch((err) => showAlertError(err.message))
+    .catch((err) => showAlertError('Usuário e/ou senha incorreto(s).'))
 }
