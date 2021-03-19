@@ -22,7 +22,7 @@ if (btnLogout) {
             .then(logout => {
                 location.href = '/login.html';
             }).catch(err => {
-                console.log(err);
+                console.error(err);
             });
     });
 }

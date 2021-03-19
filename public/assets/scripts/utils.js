@@ -15,6 +15,16 @@ export function formatCurrency(value) {
   }).format(value)
 }
 
+export function translateMessage(message) {
+  if (message == 'auth/invalid-email') {
+    alert('O endereço de e-mail está formatado incorretamente.')
+  } else if (message == 'auth/weak-password') {
+    alert('A senha deve ter 6 caracteres ou mais.')
+  } else {
+    alert('Houve algum erro no formulário, verifique e tente novamente.')
+  }
+}
+
 export function appendToTemplate(element, tagName, html) 
 {
   const wrappElement = document.createElement(tagName);

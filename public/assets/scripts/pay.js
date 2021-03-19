@@ -2,6 +2,7 @@ import { formatCurrency } from './utils'
 import { verifyAuth, logout } from './auth'
 import firebase from './firebase-app'
 import IMask from 'imask'
+import moment from 'moment';
 
 document.querySelectorAll('section#pay').forEach(page => {
     
@@ -108,8 +109,31 @@ document.querySelectorAll('section#pay').forEach(page => {
             mask: '0000 0000 0000 0000'
         })
 
+        let momentFormat = 'MM/YY';
         new IMask(validateEl, {
-            mask: '00/00'
+            mask: Date,
+            pattern: momentFormat,
+            min: new Date(2021, 2, 0),
+            max: new Date(2099, 0, 0),
+
+            format: function (date) {
+                return moment(date).format(momentFormat);
+            },
+            parse: function (str) {
+                return moment(str, momentFormat);
+            },
+            blocks: {
+                YY: {
+                    mask: IMask.MaskedRange,
+                    from: 21,
+                    to: 99
+                },
+                MM: {
+                    mask: IMask.MaskedRange,
+                    from: 1,
+                    to: 12
+                },
+            }
         })
 
         new IMask(cvvEL, {
@@ -142,7 +166,7 @@ document.querySelectorAll('section#pay').forEach(page => {
 
                         location.href = '/orders.html'
                     } catch (err) {
-                        console.log(err);
+                        console.error(err);
                     }
                 })
             } else {

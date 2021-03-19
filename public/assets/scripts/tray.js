@@ -205,7 +205,7 @@ document.querySelectorAll('#make-burguer').forEach(page => {
                     window.location.href = '/pay.html';
 
                 } catch (err) {
-                    console.log(err);
+                    console.error(err);
                 }
             }
         }

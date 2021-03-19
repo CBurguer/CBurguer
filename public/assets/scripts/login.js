@@ -25,21 +25,13 @@ if (authPage) {
 
       auth
         .signInWithEmailAndPassword(values.email, values.password)
-        .then((response) => {
-
-          const { user } = response;
-
-          console.log("response", response);
-
-          if (user != null) {
+        .then(({user}) => {
+          if (user) {
             window.location.href = "index.html";
-          } else {
-            console.log("usuario não logado");
           }
         })
         .catch((err) => {
-          console.log("err", err);
-          showAlertError(err.message);
+          showAlertError('Usuário e/ou senha incorreto(s).');
         })
         .finally(() => {
           btnSubmit.disabled = false;
@@ -65,12 +57,10 @@ if (authPage) {
         .sendPasswordResetEmail(values.email)
         .then((response) => {
           alert('Mensagem enviada! Verifique seu E-mail!');
-          console.log("response", response);
           window.location.href = "login.html";
         })
         .catch((err) => {
-          console.log("err", err);
-          showAlertError(err.message);
+          showAlertError('Não há registro de usuário correspondente a este identificador. O usuário pode ter sido excluído.');
         })
         .finally(() => {
           btnSubmit.disabled = false;

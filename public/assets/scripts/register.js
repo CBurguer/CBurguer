@@ -1,6 +1,6 @@
 import firebase from "./firebase-app";
 import Cropper from "cropperjs";
-import { getFormValues, showAlertError } from "./utils";
+import { getFormValues, showAlertError, translateMessage } from "./utils";
 
 document.querySelectorAll("#form-register").forEach((page) => {
   const inputFile = document.querySelector("#upload-image");
@@ -91,8 +91,7 @@ document.querySelectorAll("#form-register").forEach((page) => {
         }
       })
       .catch((err) => {
-        console.log("err", err);
-        showAlertError(err.message);
+        translateMessage(err.code)
       })
       .finally(() => {
         e.target.innerText = 'Enviar';
