@@ -235,6 +235,7 @@ document.querySelectorAll('#make-burguer').forEach(page => {
     
                 } catch (err) {
                     console.error(err);
+                    showAlertError('Não foi possível salvar seu pedido! Tente novamente mais tarde!');
                 }
             }
         }
