@@ -10,9 +10,14 @@ document.querySelectorAll("#form-register").forEach((page) => {
   const image = document.querySelector(".image");
   const checked = document.querySelector(".checked");
   const btnSubmit = page.querySelector("button");
+  const btnCancel = document.querySelector(".cancel");
   let cropper = null;
 
   checked.style.display = "none";
+
+  btnCancel.addEventListener("click", (e) => {
+    modal.style.display = "none";
+  });
 
   imageElement.addEventListener("click", (e) => {
     modal.style.display = "flex";
@@ -59,10 +64,9 @@ document.querySelectorAll("#form-register").forEach((page) => {
   });
 
   btnSubmit.addEventListener("click", (e) => {
-
     e.preventDefault();
 
-    e.target.innerText = 'Enviando...';
+    e.target.innerText = "Enviando...";
     e.target.disabled = true;
 
     const auth = firebase.auth();
@@ -75,26 +79,27 @@ document.querySelectorAll("#form-register").forEach((page) => {
       .then((response) => {
         if (cropper) {
           cropper.getCroppedCanvas().toBlob((blob) => {
-            
             const storage = firebase.storage();
 
-            const fileRef = storage.ref().child(`users/${response.user.uid}.png`);
+            const fileRef = storage
+              .ref()
+              .child(`users/${response.user.uid}.png`);
 
             cropper.destroy();
 
             fileRef
               .put(blob)
-              .then((snapshot) => window.location.href = "login.html");
+              .then((snapshot) => loginUser(values.email, values.password));
           });
         } else {
-          window.location.href = "login.html";
+          loginUser(values.email, values.password);
         }
       })
       .catch((err) => {
         translateMessage(err.code)
       })
       .finally(() => {
-        e.target.innerText = 'Enviar';
+        e.target.innerText = "Enviar";
         e.target.disabled = false;
       });
   });

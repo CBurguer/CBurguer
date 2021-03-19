@@ -130,18 +130,34 @@ document.querySelectorAll('#make-burguer').forEach(page => {
         
                 index += 1;
 
-                const addGreenColor = index === tray.length ? "style='color:green'" : '';
+                const addGreenColor = index !== tray.length ? "style='color:green'" : '';
         
                 const total = calculateBurgerTotal(item);
-        
+
+                let ingredientsEl = '';
+
+                if (item.bread) {
+                    ingredientsEl += `<div>${item.bread.name}</div>`;
+                }
+
+                item.ingredients.forEach(ingredient => {
+                    ingredientsEl += `<div>${ingredient.name}</div>` 
+                });
+
                 const li = appendToTemplate(listEl, 'li',
-                    `<div ${addGreenColor}>Hamburguer ${index}</div>
+                    `<div class="hambuguer">
+                        <div ${addGreenColor}>CBurguer ${index}</div>
                         <div ${addGreenColor}>${formatCurrency(total)}</div>
-                        <button type="button" id="btn-delete" aria-label="Remover Hamburguer ${index}">
+                        <button type="button" id="btn-delete" aria-label="Remover CBurguer ${index}">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4Z" fill="black"/>
                             </svg>
-                        </button>`
+                        </button>
+                    </div>
+                    <div class="items">
+                        ${ingredientsEl}
+                    </div>
+                    `
                 );
         
                 li.querySelector('#btn-delete').addEventListener('click', () => deleteBurguer(index - 1));
@@ -153,15 +169,15 @@ document.querySelectorAll('#make-burguer').forEach(page => {
         
             if (tray.length === 0) {
         
-                smallEl.innerText = 'Nenhum hamburguer';
+                smallEl.innerText = 'Nenhum CBurguer';
         
             } else if (tray.length == 1) {
         
-                smallEl.innerText = '1 hamburguer';
+                smallEl.innerText = '1 CBurguer';
         
             } else {
         
-                smallEl.innerText = tray.length + ' hamburgueres';
+                smallEl.innerText = tray.length + ' CBurguers';
             }
         }
         
@@ -180,30 +196,43 @@ document.querySelectorAll('#make-burguer').forEach(page => {
         }
         
         const saveOrder = async () => {
+
+            let trayIsValid = true;
           
             const tray = getTray();
 
-            if (!tray || tray.length < 1 || tray[0].ingredients.length < 1) {
+            if (!tray || tray.length < 1) {
 
-                showAlertError('A bandeja deve conter ao menos 1 item!');
-        
-            } else {
+                showAlertError('A bandeja deve conter ao menos 1 CBurguer!');
+                trayIsValid = false;
+            } 
+            
+            tray.forEach((item, index) => {
+
+                if (!item.bread || item.ingredients.length < 1) {
+
+                    showAlertError(`O CBurguer ${index + 1} é inválido! Finalize sua seleção ou exclua-o da bandeja!`);
+                    trayIsValid = false;
+                    return;
+                }
+            });
                 
+            if (trayIsValid) {
+
                 try {
-
                     const tray = getTray();
-
+    
                     await db.collection('carts').doc(uid).collection('orders').add({
-                       active: 1,
-                       created: new Date(),
-                       subtotal: calculateTraySubTotal(tray),
-                       items: tray
+                        active: 1,
+                        created: new Date(),
+                        subtotal: calculateTraySubTotal(tray),
+                        items: tray
                     });
-
+    
                     setTray([]);
-
+    
                     window.location.href = '/pay.html';
-
+    
                 } catch (err) {
                     console.error(err);
                 }
@@ -241,8 +270,10 @@ document.querySelectorAll('#make-burguer').forEach(page => {
         const clearBurguerSelection = (context) => {
 
             currentBurguer.ingredients = [];
+            currentBurguer.bread = null;
 
             context.querySelectorAll('input[type=checkbox]').forEach(checkbox => checkbox.checked = false);
+            context.querySelectorAll('input[type=radio]').forEach(radio => radio.checked = false);
         }
 
         loadBreads();
@@ -251,16 +282,17 @@ document.querySelectorAll('#make-burguer').forEach(page => {
 
         page.querySelector('#btn-save-burguer').addEventListener('click', e => {
 
-            if (currentBurguer.ingredients.length < 1) {
-               
-                showAlertError('O hamburguer deve conter ao menos 1 ingrediente!');
+            if (!currentBurguer.bread) {
+                showAlertError('O CBurguer deve conter um pão!');
+            } else if (currentBurguer.ingredients.length < 1) {
+                showAlertError('O CBurguer deve conter ao menos 1 ingrediente!');
             } else {
 
                 clearBurguerSelection(page);
 
                 updateLastBurguer = false;
 
-                alert('Hambuguer salvo com sucesso!');
+                alert('CBurguer salvo com sucesso!');
             }
         });
         
@@ -272,5 +304,7 @@ document.querySelectorAll('#make-burguer').forEach(page => {
     
             trayEl.querySelector('#btn-pay').addEventListener('click', e => saveOrder());
         }
+
+        renderTray();
     }
 });

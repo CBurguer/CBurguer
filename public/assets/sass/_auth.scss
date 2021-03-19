@@ -18,11 +18,19 @@
 
     .container {
       display: flex;
+      position: relative;
       justify-content: center;
       align-items: center;
       width: 320px;
       height: 380px;
       background-color: white;
+
+      .cancel{
+        position: absolute;
+        cursor: pointer;
+        top: 8px;
+        right: 8px;
+      }
 
       div {
         align-items: center;

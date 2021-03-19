@@ -1,3 +1,5 @@
+import firebase from "./firebase-app";
+
 export function getFormValues(form) {
     const values = {};
 
@@ -41,11 +43,12 @@ export function calculateBurgerTotal(burguer)
   let total = 0;
 
   burguer.ingredients.forEach(ingredient => {
-
       total = total + Number(ingredient.price)
   });
 
-  total = total + Number(burguer.bread.price);
+  if (burguer.bread) {
+    total = total + Number(burguer.bread.price);
+  }
 
   return total;
 }
@@ -71,4 +74,20 @@ export function showAlertError(message)
 export function randomOrderNumber(min, max)
 {
     return Math.floor(Math.random() * (max - min) + min);
+}
+
+export function loginUser(email, password)
+{
+  return firebase.auth()
+    .signInWithEmailAndPassword(email, password)
+    .then((response) => {
+
+      const { user } = response;
+
+      if (user != null) {
+        window.location.href = "index.html";
+      }
+
+    })
+    .catch((err) => showAlertError(err.message))
 }
