@@ -108,9 +108,37 @@ document.querySelectorAll('section#pay').forEach(page => {
             mask: '0000 0000 0000 0000'
         })
 
-        new IMask(validateEl, {
-            mask: '00/00'
+        const validateElMask = new IMask(validateEl, {
+            mask: 'M/Y',
+            blocks: {
+                M: {
+                    mask: IMask.MaskedRange,
+                    from: 1,
+                    to: 12
+                },
+                Y: {
+                    mask: IMask.MaskedRange,
+                    from: new Date().getFullYear().toString().substr(-2),
+                    to: 99
+                }
+            },
         })
+
+        validateElMask.on('complete', () => {
+
+            const [month, year] = validateElMask.value.split('/');
+
+            const currentYear = new Date().getFullYear().toString().substr(-2);
+
+            if (+currentYear === +year) {
+                
+                const currentMonth = new Date().getMonth() + 1;
+
+                if (+month < +currentMonth) {
+                    validateElMask.value = (currentMonth < 10 ? '0' : '') + currentMonth + '/' + year;
+                }
+            }
+        });
 
         new IMask(cvvEL, {
             mask: '000[0]'
