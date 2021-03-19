@@ -104,25 +104,26 @@
       }
 
       .logout {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         position: absolute;
-        left: var(--space);
-        top: 30px;
-        width: 30px;
-        height: 30px;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: row;
+        align-items: center;        
+        bottom: 30px;
+        left: 40%;
+           
         cursor: pointer;
 
         .btnLogout {
-          color: white;
+          justify-content: space-between;
+          color: #a9a8ae;
           text-decoration: none;
-
+          font-size: 16px;
+          width: 65px;
+          line-height: 10px;
+          
           &:hover {
-            img {
-              width: 32px;
-              height: 32px;
-            }
+            color: #c2c2c5;
           }
         }
       }
